@@ -43,6 +43,7 @@ namespace underground_innovation.Models
             var email = "user@test.com";
             if (await _userManager.FindByEmailAsync(email) == null)
             {
+                // Seed everything
                 var user = new ApplicationUser
                 {
                     UserName = email,
@@ -52,7 +53,27 @@ namespace underground_innovation.Models
                 };
                 var result = await _userManager.CreateAsync(user, "T3mpp@ss!");
                 result = await _userManager.AddToRoleAsync(user, adminRole.Name);
+
+
+
+                // Preload interests
+                var interests = new[]
+                {
+                    new Interest { Name = "Drones", Description = "Cool flying robots." },
+                    new Interest { Name = "Cyber Security", Description = "Hack the planet." },
+                    new Interest { Name = "Paranormal", Description = "ESP Programs."  },
+                };
+
+                _context.AddRange(
+                    new ApplicationUserInterest { ApplicationUser = user, Interest = interests[0] },
+                    new ApplicationUserInterest { ApplicationUser = user, Interest = interests[2] }
+                );
+
+                _context.AddRange(interests);
+
             }
+
+
 
             _context.SaveChanges();
         }
