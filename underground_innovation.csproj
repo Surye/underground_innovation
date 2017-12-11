@@ -4,8 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0-rc1-final" />
-    <PackageReference Include="AspNet.Security.OpenIdConnect.Primitives" Version="2.0.0-rc1-final" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
@@ -19,9 +17,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
-    <PackageReference Include="OpenIddict" Version="2.0.0-rc2-0775" />
-    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="2.0.0-rc2-0775" />
-    <PackageReference Include="OpenIddict.Mvc" Version="2.0.0-rc2-0775" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.5" />
