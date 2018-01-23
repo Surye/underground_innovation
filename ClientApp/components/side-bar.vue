@@ -1,5 +1,5 @@
 <template>
-  <b-nav vertical class="bg-dark">
+  <b-nav vertical class="bg-dark h-100">
     <a class="nav-link bg-dark text-muted" href="#">Active</a>
     <a class="nav-link bg-dark text-muted" href="#">Home</a>
     <a class="nav-link bg-dark text-muted" href="#">Submissions</a>

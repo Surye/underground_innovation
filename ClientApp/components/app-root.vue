@@ -11,7 +11,7 @@
           <side-bar></side-bar>
         </b-col>
         <b-col cols="10">
-          <router-view></router-view>
+          <router-view class="mt-2"></router-view>
         </b-col>
       </b-row>
     </b-container>
@@ -32,4 +32,5 @@
 </script>
 
 <style scoped>
+
 </style>
