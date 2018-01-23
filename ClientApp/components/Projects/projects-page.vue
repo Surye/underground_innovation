@@ -3,7 +3,7 @@
         <b-row>
             <b-breadcrumb :items="items"/>
         </b-row>
-        <b-checkbox v-model="my_projects"> Only Show My Projects</b-checkbox>
+        <b-form-checkbox plain v-model="my_projects"> Only Show My Projects</b-form-checkbox>
         <ProjectsSummaryPanel :project="project" v-for="project in filteredProjects" :key="project.project_id" />
     </div>
 </template>
