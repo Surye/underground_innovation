@@ -14,7 +14,7 @@
             <dt>Total Active Forums:</dt> <dd>25</dd>
             <dt>Last Update:</dt> <dd>5 minutes ago</dd>
             </dl>
-            <div class="go-button"><b-button size="lg" variant="primary">Visit Forums</b-button></div>
+            <div class="go-button"><b-button size="lg" variant="primary" :to="{ name: 'project_forums', params: { project_id: 1 }}">Visit Forums</b-button></div>
         </b-card>
 
         <b-card header-tag="h3" 

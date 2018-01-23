@@ -44,7 +44,4 @@ export default {
 </script>
 
 <style scoped>
-.title-panel {
-    clear: both;
-}
 </style>
