@@ -22,7 +22,7 @@
             </vue-password>
         </div>
         <div class="form-group">
-            <vue-password v-model="registration.password"
+            <vue-password v-model="registration.password_confirm"
                           classes="input form-control" placeholder="Confirm Password"
                           :user-inputs="[registration.username]">
             </vue-password>
