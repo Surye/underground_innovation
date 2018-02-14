@@ -3,6 +3,7 @@ import Login from 'components/login-page'
 import Projects from 'components/Projects/projects-page'
 import ProjectDetails from 'components/Projects/projects-detail-page'
 import Forums from 'components/Forums/forums-page'
+import ForumReplies from 'components/Forums/ForumDetail/forum-detail-page'
 import Registration from 'components/register-page'
 import { requireAuth } from './auth';
 
@@ -17,7 +18,9 @@ export const routes = [
 
   { name: 'projects', path: '/projects', component: Projects },
   { name: 'project_details', path: '/projects/:project_id', component: ProjectDetails },
-  { name: 'project_forums', path: '/projects/:project_id/forums', component: Forums }
+  { name: 'project_forums', path: '/projects/:project_id/forums', component: Forums },
+  { name: 'project_forums_replies', path: '/projects/:project_id/forums/:forum_id', component: ForumReplies }
+
 
 
   //// Requires Login

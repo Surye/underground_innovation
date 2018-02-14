@@ -6,11 +6,13 @@ import 'babel-polyfill'
 import { sync } from 'vuex-router-sync'
 import App from 'components/app-root'
 import BootstrapVue from 'bootstrap-vue'
+import VuePaginate from 'vue-paginate'
+
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
- 
 
+Vue.use(VuePaginate)
 Vue.use(BootstrapVue);
 Vue.prototype.$http = axios;
 

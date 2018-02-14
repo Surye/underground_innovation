@@ -4,7 +4,7 @@
             <b-card>
                 <b-row>
                     <b-col cols=10>
-                        <h4><a href="">{{forum.title}}</a> <b-badge v-if="forum.unread">UNREAD</b-badge></h4>
+                        <h4><b-link :to="{ name: 'project_forums_replies', params: { forum_id: forum.id }}">{{forum.title}}</b-link> <b-badge v-if="forum.unread">UNREAD</b-badge></h4>
                     </b-col>
                     <b-col cols=2>
                         Reply Count: {{forum.posts.length}}

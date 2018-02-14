@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav-menu-top></nav-menu-top>
-    <nav-menu-bottom></nav-menu-bottom>
+    <!--<nav-menu-bottom></nav-menu-bottom> -->
   </div>
 </template>
 

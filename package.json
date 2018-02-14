@@ -19,6 +19,8 @@
     "vue": "^2.1.8",
     "vue-axios": "^2.0.2",
     "vue-cli": "^2.9.2",
+    "vue-fab": "^2.1.2",
+    "vue-paginate": "^3.5.1",
     "vue-password": "^1.1.0",
     "vue-router": "^2.1.1",
     "vue-server-renderer": "^2.1.8",
