@@ -18,17 +18,24 @@
         :actions="fab.fabActions"
         @cache="cache"
         @alertMe="alert"
+        @addPollReply="showPollsAdd"
       ></fab>
+
+      <b-modal ref="addPoll" size="lg" center hide-footer title="Add new poll reply.">
+        <PollCreatePanel/>
+        <b-btn class="mt-3" variant="outline-danger" block @click="hidePollsAdd">Cancel</b-btn>
+      </b-modal>
     </div>
 </template>
 
 <script>
   import ForumPostDetail from './forum-post-detail'
   import ForumPostReply from './forum-post-reply'
+  import PollCreatePanel from '../../Polls/poll-create-panel'
   import fab from 'vue-fab'
 
   export default {
-    components: {ForumPostDetail, ForumPostReply, fab},
+    components: {ForumPostDetail, ForumPostReply, PollCreatePanel, fab},
     computed: {
       items () {
         return  [{
@@ -121,7 +128,7 @@
                   tooltip: 'Add new reply to forum.'
               },
               {
-                  name: 'alertMe',
+                  name: 'addPollReply',
                   icon: 'playlist_add',
                   tooltip: 'Add new poll to forum.'
               }
@@ -135,6 +142,12 @@
       },
       alert(){
           alert('Clicked on alert icon');
+      },
+      hidePollsAdd () {
+        this.$refs.addPoll.hide()
+      },
+      showPollsAdd () {
+        this.$refs.addPoll.show()
       }
     }
   }
