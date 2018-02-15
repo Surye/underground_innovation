@@ -3,13 +3,13 @@
     <b-link to="/projects" class="nav-link bg-dark text-muted" href="#">Projects</b-link>
     <a class="nav-link bg-dark text-muted" href="#">Home</a>
     <!--<a class="nav-link bg-dark text-muted" href="#">Submissions</a>
-    <a class="nav-link bg-dark text-muted" href="#">Top Topics</a>-->
+    <a class="nav-link bg-dark text-muted" href="#">Top Topics</a>
     <a class="nav-link bg-dark text-muted" href="#">Ellis Group</a>
     <a class="nav-link bg-dark text-muted" href="#">Fellowship Program</a>
     <a class="nav-link bg-dark text-muted" href="#">'Gap List'</a>
     <a class="nav-link bg-dark text-muted" href="#">User Accounts</a>
     <a class="nav-link bg-dark text-muted" href="#">POC's</a>
-    <a class="nav-link bg-dark text-muted" href="#">Ellis Group</a>
+    <a class="nav-link bg-dark text-muted" href="#">Ellis Group</a>-->
   </b-nav>
 </template>
 

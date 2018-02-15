@@ -23,7 +23,7 @@ export const routes = [
   { name: 'project_forums', path: '/projects/:project_id/forums', component: Forums },
   { name: 'project_forums_replies', path: '/projects/:project_id/forums/:forum_id', component: ForumReplies },
 
-  { name: 'polls_new', path: '/polls/new', component: PollsNew }
+  { name: 'polls_new', path: '/projects/:project_id/polls/new', component: PollsNew }
 
   //// Requires Login
   //{

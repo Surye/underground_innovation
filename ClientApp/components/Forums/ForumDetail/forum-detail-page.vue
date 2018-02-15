@@ -4,11 +4,15 @@
           <b-breadcrumb :items="items"/>
       </b-row>
       <b-row>
-        <ForumPostDetail :forum='forum'/>
+        <b-col centered cols="8">
+          <ForumPostDetail :forum='forum'/>
+        </b-col>
       </b-row>
       <template v-for="reply in replies">
         <b-row :key='reply.id'>
-          <ForumPostReply :reply='reply' :key='reply.id'/>
+          <b-col center cols="8">
+            <ForumPostReply :reply='reply' :key='reply.id'/>
+          </b-col>
         </b-row>
       </template>
 
@@ -117,11 +121,6 @@
           bgColor: '#778899',
           position: 'bottom-right',
           fabActions: [
-              {
-                  name: 'cache',
-                  icon: 'cached',
-                  tooltip: 'Refresh forum.'
-              },
               {
                   name: 'alertMe',
                   icon: 'note_add',

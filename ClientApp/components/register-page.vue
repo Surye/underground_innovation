@@ -72,7 +72,7 @@
         </div>
         <div class="form-group">
             <label>Interests:</label>
-            <span v-for='interest in registration.interests'>
+            <span v-for='interest in registration.interests' :key='interest.name'>
                 <br />{{ interest.name }} <input type='checkbox'
                        :value='interest.name'
                        v-model='interest.checked'>
@@ -90,7 +90,7 @@
     import VuePassword from 'vue-password'
 
     Vue.component('vue-password', VuePassword)
-      
+
     export default {
         data() {
             return {
