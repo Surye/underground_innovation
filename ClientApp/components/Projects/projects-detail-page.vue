@@ -5,7 +5,7 @@
     </b-row>
     <b-jumbotron header="Drone Lunch Delivery" lead="Project to develop a drone that can deliver lunch to people out in the field."></b-jumbotron>
     <b-card-group deck>
-        <b-card header-tag="h3" 
+        <b-card header-tag="h3"
                 header="Forums"
                 bg-variant="dark"
                 text-variant="white"
@@ -17,7 +17,7 @@
             <div class="go-button"><b-button size="lg" variant="primary" :to="{ name: 'project_forums', params: { project_id: 1 }}">Visit Forums</b-button></div>
         </b-card>
 
-        <b-card header-tag="h3" 
+        <b-card header-tag="h3"
                 header="Polls"
                 bg-variant="dark"
                 text-variant="white"
@@ -26,10 +26,10 @@
                     <dt>Total Polls:</dt> <dd>12</dd>
                     <dt>Last Update:</dt> <dd>1 day ago</dd>
                 </dl>
-                <div class="go-button"><b-button size="lg" variant="primary">Visit Polls</b-button></div>
+                <div class="go-button"><b-button size="lg" variant="primary" :to="{ name: 'project_polls', params: { project_id: 1 }}">Visit Polls</b-button></div>
         </b-card>
 
-        <b-card header-tag="h3" 
+        <b-card header-tag="h3"
                 header="Project Members"
                 bg-variant="dark"
                 text-variant="white"
@@ -38,14 +38,14 @@
                     <dt>Total Members:</dt> <dd>22</dd>
                     <dt>Total Moderators:</dt> <dd>2</dd>
                 </dl>
-                <div class="go-button"><b-button size="lg" variant="primary">View Member List</b-button></div>
+                <div class="go-button"><b-button size="lg" variant="primary" :to="{ name: 'project_members', params: { project_id: 1 }}">View Member List</b-button></div>
         </b-card>
     </b-card-group>
   </div>
 </template>
 
 
-<script> 
+<script>
 export default {
   data() {
     return {

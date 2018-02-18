@@ -11,8 +11,7 @@
 <script>
 import PollCreatePanel from './poll-create-panel'
 export default {
-  components: {PollCreatePanel},
-
+  components: {PollCreatePanel}
 }
 </script>
 

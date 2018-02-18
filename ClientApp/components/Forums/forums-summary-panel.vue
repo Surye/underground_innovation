@@ -30,11 +30,11 @@
     </b-row>
 </template>
 
-<script> 
+<script>
 
 export default {
   props: {
-    forum: Object    
+    forum: Object
   },
   data() {
     return {

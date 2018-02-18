@@ -4,7 +4,10 @@ import Projects from 'components/Projects/projects-page'
 import ProjectDetails from 'components/Projects/projects-detail-page'
 import Forums from 'components/Forums/forums-page'
 import ForumReplies from 'components/Forums/ForumDetail/forum-detail-page'
+import Polls from 'components/Polls/polls-page'
 import PollsNew from 'components/Polls/poll-new'
+import Members from 'components/Members/members-page'
+
 
 import Registration from 'components/register-page'
 import { requireAuth } from './auth';
@@ -23,7 +26,11 @@ export const routes = [
   { name: 'project_forums', path: '/projects/:project_id/forums', component: Forums },
   { name: 'project_forums_replies', path: '/projects/:project_id/forums/:forum_id', component: ForumReplies },
 
-  { name: 'polls_new', path: '/projects/:project_id/polls/new', component: PollsNew }
+  { name: 'project_polls', path: '/projects/:project_id/polls', component: Polls },
+  { name: 'polls_new', path: '/projects/:project_id/polls/new', component: PollsNew },
+
+  { name: 'project_members', path: '/projects/:project_id/members', component: Members },
+
 
   //// Requires Login
   //{
