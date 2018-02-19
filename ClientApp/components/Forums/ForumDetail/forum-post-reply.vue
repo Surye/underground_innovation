@@ -1,5 +1,5 @@
 <template>
-  <b-row>
+  <b-row class="mb-2">
     <b-col>
       <b-card>
         <b-row class="card-footer">

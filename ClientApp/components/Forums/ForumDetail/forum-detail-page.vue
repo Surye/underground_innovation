@@ -9,9 +9,10 @@
         </b-col>
       </b-row>
       <template v-for="reply in replies">
-        <b-row :key='reply.id'>
+        <b-row :key='"reply.type" + reply.id'>
           <b-col center cols="8">
-            <ForumPostReply :reply='reply' :key='reply.id'/>
+            <ForumPostReply v-if="reply.type == 'reply'" :reply='reply'/>
+            <PollDisplayPanel v-if="reply.type == 'poll'" :poll='reply'/>
           </b-col>
         </b-row>
       </template>
@@ -20,14 +21,17 @@
         :position="fab.position"
         :bg-color="fab.bgColor"
         :actions="fab.fabActions"
-        @cache="cache"
-        @alertMe="alert"
-        @addPollReply="showPollsAdd"
-      ></fab>
+        @addReply="showReplyAdd"
+        @addPollReply="showPollsAdd" />
 
       <b-modal ref="addPoll" size="lg" center hide-footer title="Add new poll reply.">
-        <PollCreatePanel/>
+        <PollCreatePanel ref='newPoll'/>
         <b-btn class="mt-3" variant="outline-danger" block @click="hidePollsAdd">Cancel</b-btn>
+      </b-modal>
+
+      <b-modal ref="addReply" size="lg" center hide-footer title="Add new reply.">
+        <ReplyCreatePanel ref='newReply'/>
+        <b-btn class="mt-3" variant="outline-danger" block @click="hideReplyAdd">Cancel</b-btn>
       </b-modal>
     </div>
 </template>
@@ -36,10 +40,12 @@
   import ForumPostDetail from './forum-post-detail'
   import ForumPostReply from './forum-post-reply'
   import PollCreatePanel from '../../Polls/poll-create-panel'
+  import ReplyCreatePanel from './reply-create-panel'
+  import PollDisplayPanel from '../../Polls/poll-display-panel'
   import fab from 'vue-fab'
 
   export default {
-    components: {ForumPostDetail, ForumPostReply, PollCreatePanel, fab},
+    components: {ForumPostDetail, ForumPostReply, ReplyCreatePanel, PollCreatePanel, PollDisplayPanel, fab},
     computed: {
       items () {
         return  [{
@@ -69,52 +75,92 @@
         },
         replies: [
           {
-            "id": 0,
-            "author": "Desiree",
-            "create_time": "Saturday, November 26, 2016 5:04 PM",
-            "content": "Exercitation excepteur sint excepteur aliquip excepteur pariatur quis magna culpa cupidatat. Commodo ullamco magna nulla culpa cillum Lorem labore nisi do. Excepteur qui officia consequat Lorem ut qui fugiat cupidatat dolore ex. Reprehenderit incididunt pariatur voluptate laborum amet sint irure nulla sint ut esse enim."
+              "type":"reply",
+              "id":0,
+              "author":"Bruce",
+              "create_time":"Monday, January 11, 2016 9:43 PM",
+              "content":"Aliquip cupidatat in aliqua deserunt Lorem anim excepteur. Eu amet dolor excepteur sint ea consequat quis magna. Nisi Lorem est voluptate irure esse consequat. Reprehenderit eu excepteur enim eu commodo enim exercitation reprehenderit ut quis. Amet nulla ipsum eiusmod culpa cupidatat ex officia excepteur qui velit. Eiusmod voluptate nisi sint nulla cupidatat do non ullamco officia."
           },
           {
-            "id": 1,
-            "author": "Louisa",
-            "create_time": "Thursday, September 1, 2016 9:36 AM",
-            "content": "Occaecat ex cillum consectetur exercitation reprehenderit culpa incididunt. Et enim irure qui pariatur elit aliqua. Exercitation non laboris deserunt id Lorem duis cupidatat incididunt ad esse incididunt anim. Proident non cupidatat magna enim et ex nulla sunt fugiat adipisicing eiusmod occaecat."
+              "type":"reply",
+              "id":1,
+              "author":"Cassandra",
+              "create_time":"Sunday, July 31, 2016 1:31 AM",
+              "content":"Dolor nisi quis tempor qui ipsum adipisicing. Magna deserunt laborum est ipsum voluptate enim commodo officia consequat Lorem. Ex ad nostrud commodo nostrud sit officia officia proident esse culpa exercitation. Consequat cillum pariatur nulla et laborum ut ullamco."
           },
           {
-            "id": 2,
-            "author": "Erica",
-            "create_time": "Thursday, February 11, 2016 10:48 PM",
-            "content": "Quis id dolore Lorem non anim sunt aliquip qui. Do occaecat sit duis velit aute amet aliqua ad mollit irure. Aute nisi mollit velit velit officia esse adipisicing reprehenderit duis Lorem mollit. Esse tempor qui deserunt non amet deserunt incididunt dolor consequat aute veniam incididunt ut. Ullamco eiusmod velit laborum aliqua consequat ea proident duis. Elit fugiat incididunt consectetur aute enim id."
+              "type":"reply",
+              "id":2,
+              "author":"Marsha",
+              "create_time":"Thursday, February 16, 2017 6:25 PM",
+              "content":"Commodo labore veniam in adipisicing veniam commodo. Occaecat velit sunt elit voluptate incididunt non culpa aute sunt. Et sunt laborum ex proident tempor anim duis tempor do commodo ea ex. Ullamco laborum ad officia culpa enim eiusmod ipsum sint occaecat tempor veniam esse magna Lorem. Aliquip occaecat ipsum mollit tempor exercitation."
           },
           {
-            "id": 3,
-            "author": "Trisha",
-            "create_time": "Monday, June 15, 2015 10:12 PM",
-            "content": "Cupidatat elit culpa quis aliquip enim exercitation tempor. Amet nostrud voluptate commodo eu sit mollit mollit cillum proident commodo enim exercitation labore esse. Anim ullamco mollit nostrud non enim commodo. Et laborum nulla commodo consectetur deserunt esse ex amet enim officia culpa."
+              "type":"reply",
+              "id":3,
+              "author":"Constance",
+              "create_time":"Thursday, August 6, 2015 4:49 PM",
+              "content":"Adipisicing occaecat nulla ullamco velit officia nulla tempor duis cupidatat magna pariatur ipsum nisi. Do irure sunt cillum laboris dolor excepteur ad enim. Tempor eiusmod eu sit laborum non deserunt ex officia est ut. Lorem mollit ex consectetur commodo fugiat enim velit. Occaecat fugiat culpa enim commodo irure."
           },
           {
-            "id": 4,
-            "author": "Stokes",
-            "create_time": "Wednesday, February 7, 2018 4:54 PM",
-            "content": "Quis officia mollit officia culpa consequat duis magna ipsum nisi. Culpa aliquip exercitation culpa esse ad adipisicing qui sit irure labore nisi. Sunt do sunt esse cillum sunt quis. Do labore commodo pariatur consequat mollit. Irure ipsum anim dolore sit."
+              "type":"poll",
+              "id":0,
+              "question":"Aliqua id eu voluptate nostrud magna elit veniam cupidatat mollit dolor in minim.",
+              "author":"Tammie",
+              "description":"Exercitation minim mollit Lorem duis laborum in ut. Magna reprehenderit in laborum cillum pariatur et. Ipsum nostrud anim voluptate fugiat sint dolore duis ullamco occaecat nisi consequat mollit sit. Qui do nostrud amet occaecat occaecat magna ut excepteur aliquip. Est Lorem voluptate ea labore elit Lorem dolor aliqua culpa. Fugiat ipsum qui nostrud eiusmod deserunt amet quis nisi et est nisi dolore deserunt Lorem.",
+              "create_time":"Wednesday, November 5, 2014 10:16 PM",
+              "my_answer":0,
+              "answers":[
+                {
+                    "id":0,
+                    "content":"Officia incididunt et exercitation sit ad Lorem dolore consequat et elit ut.",
+                    "current_selections":29
+                },
+                {
+                    "id":1,
+                    "content":"Aliquip fugiat aliquip cupidatat occaecat nostrud officia Lorem laboris amet aliqua pariatur qui.",
+                    "current_selections":40
+                },
+                {
+                    "id":2,
+                    "content":"Elit ex aliqua enim anim et duis non officia adipisicing.",
+                    "current_selections":29
+                }
+              ]
           },
           {
-            "id": 5,
-            "author": "Stuart",
-            "create_time": "Tuesday, June 3, 2014 3:39 AM",
-            "content": "Amet officia Lorem ut nisi mollit sint commodo consectetur labore nisi irure sint sunt tempor. Anim incididunt non non qui voluptate cillum aliqua ex. Enim adipisicing non tempor ut nulla aute proident. Minim sint ad ullamco laboris eu ullamco veniam culpa pariatur commodo. Veniam ipsum esse incididunt nulla enim cillum et aliquip aliqua laboris irure."
+              "type":"reply",
+              "id":4,
+              "author":"Michael",
+              "create_time":"Saturday, August 5, 2017 3:45 AM",
+              "content":"Enim nisi velit amet mollit qui laborum aute proident cillum sunt deserunt eu. Nostrud aute ad aliquip velit eiusmod aliqua veniam et qui incididunt. Anim reprehenderit non tempor occaecat id ut duis aliquip consectetur laborum in."
           },
           {
-            "id": 6,
-            "author": "Cora",
-            "create_time": "Sunday, August 27, 2017 12:14 PM",
-            "content": "Non do minim nostrud excepteur voluptate incididunt. Ut labore elit labore exercitation irure excepteur. Nostrud laborum tempor sit anim qui et nostrud reprehenderit eiusmod exercitation quis magna minim aliqua."
+              "type":"poll",
+              "id":1,
+              "question":"Eiusmod sint amet pariatur laboris id.",
+              "author":"Spencer",
+              "description":"Nostrud velit commodo consectetur aliquip. Fugiat amet anim labore eiusmod quis duis sint do mollit non. In do mollit id culpa. Occaecat consectetur do incididunt anim veniam excepteur aute enim elit. Officia velit ut esse ad sunt. Incididunt Lorem et incididunt occaecat laborum do ad aute.",
+              "create_time":"Friday, October 24, 2014 12:26 AM",
+              "answers":[
+                {
+                    "id":0,
+                    "content":"Adipisicing cupidatat exercitation cupidatat culpa ad do consequat aliquip irure.",
+                    "current_selections":39
+                },
+                {
+                    "id":1,
+                    "content":"Nisi tempor est velit enim qui.",
+                    "current_selections":20
+                }
+              ]
           },
           {
-            "id": 7,
-            "author": "Karin",
-            "create_time": "Wednesday, February 26, 2014 2:07 AM",
-            "content": "Aute sint excepteur consectetur amet laborum. Magna ea irure Lorem sit in laboris excepteur sint ullamco enim dolore occaecat culpa proident. Eu elit enim laboris deserunt et exercitation excepteur officia. Irure qui duis cupidatat excepteur est sint veniam est. Excepteur voluptate in fugiat sunt nulla. Ut elit consequat excepteur ex elit ipsum excepteur labore Lorem. Quis consequat incididunt aute mollit sint culpa ut velit consectetur Lorem tempor nostrud pariatur et."
+              "type":"reply",
+              "id":5,
+              "author":"Oliver",
+              "create_time":"Friday, March 20, 2015 1:24 AM",
+              "content":"Minim aute labore fugiat laboris ex ullamco eu ea labore velit. Ex cillum elit Lorem ea sint ut laboris cupidatat sunt fugiat qui aliqua aliqua. Pariatur do sint minim nulla Lorem minim aliquip. Eiusmod duis fugiat ad sit eu cupidatat pariatur voluptate fugiat."
           }
         ],
         fab: {
@@ -122,7 +168,7 @@
           position: 'bottom-right',
           fabActions: [
               {
-                  name: 'alertMe',
+                  name: 'addReply',
                   icon: 'note_add',
                   tooltip: 'Add new reply to forum.'
               },
@@ -136,16 +182,18 @@
       }
     },
     methods:{
-      cache(){
-          console.log('Cache Cleared');
+      hideReplyAdd () {
+        this.$refs.addReply.hide()
       },
-      alert(){
-          alert('Clicked on alert icon');
+      showReplyAdd () {
+        this.$refs.newReply.reset()
+        this.$refs.addReply.show()
       },
       hidePollsAdd () {
         this.$refs.addPoll.hide()
       },
       showPollsAdd () {
+        this.$refs.newPoll.reset()
         this.$refs.addPoll.show()
       }
     }
