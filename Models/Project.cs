@@ -8,15 +8,19 @@ using System.Threading.Tasks;
 
 namespace UndergroundInnovation.Models
 {
-    [Table("Interests")]
-    public class Interest
+    public class Project : IDatedEntity
     {
         [Key]
-        public int InterestId { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
         [Column(TypeName = "text")]
         public string Description { get; set; }
 
-        public ICollection<ApplicationUserInterest> ApplicationUserInterests { get; } = new List<ApplicationUserInterest>();
+        public ICollection<ProjectMembers> ProjectMembers { get; } = new List<ProjectMembers>();
+
+        [Column("created_at")]
+        public DateTime CreatedDate { get; set; }
+        [Column("updated_at")]
+        public DateTime UpdatedDate { get; set; }
     }
 }

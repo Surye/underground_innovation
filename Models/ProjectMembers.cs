@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace UndergroundInnovation.Models
 {
-    [Table("ApplicationUserInterests")]
-    public class ApplicationUserInterest
+    public class ProjectMembers
     {
-        public int InterestId { get; set; }
-        public Interest Interest { get; set; }
+        public int ProjectId { get; set; }
+        public Project Project { get; set; }
 
-        public string ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
+
+        public bool Admin { get; set; }
     }
 }

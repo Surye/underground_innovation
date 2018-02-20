@@ -17,5 +17,12 @@ namespace UndergroundInnovation.Models
         public string Phone { get; set; }
 
         public ICollection<ApplicationUserInterest> ApplicationUserInterests { get; } = new List<ApplicationUserInterest>();
+        public ICollection<ProjectMembers> ProjectMembers { get; } = new List<ProjectMembers>();
+        public ICollection<UserPollAnswers> UserPollAnswers { get; } = new List<UserPollAnswers>();
+
+        public List<Forum> Forums { get; set; }
+        public List<Poll> Polls { get; set; }
+
+        
     }
 }
