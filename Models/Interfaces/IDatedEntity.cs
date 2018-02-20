@@ -11,6 +11,6 @@ namespace UndergroundInnovation.Models
         [Column("created_at")]
         DateTime CreatedDate { get; set; }
         [Column("updated_at")]
-        DateTime UpdatedDate { get; set; }
+        DateTime? UpdatedDate { get; set; }
     }
 }

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 using UndergroundInnovation.Models;
 using UndergroundInnovation.Models.AccountViewModels;
 
-namespace underground_innovation.Controllers
+namespace UndergroundInnovation.Controllers
 {
     public class AuthController : Controller
     {

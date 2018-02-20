@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using UndergroundInnovation.Data;
 
-namespace underground_innovation.Migrations
+namespace UndergroundInnovation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20171211063645_RemoveOpenID")]

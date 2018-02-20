@@ -10,9 +10,19 @@ namespace UndergroundInnovation.Data
     {
 
         public DbSet<Interest> Interests { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Poll> Polls { get; set; }
+        public DbSet<Forum> Forums { get; set; }
+        public DbSet<ForumPost> ForumPosts { get; set; }
+        public DbSet<PollAnswer> PollAnswers { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
+        {
+        }
+
+        public ApplicationDbContext() : base ()
         {
         }
 
@@ -64,7 +74,7 @@ namespace UndergroundInnovation.Data
 
             // Many to many for User Poll Answers
             builder.Entity<UserPollAnswers>()
-                .HasKey(t => new { t.UserId, t.PollAnswer });
+                .HasKey(t => new { t.UserId, t.PollAnswerId });
 
             builder.Entity<UserPollAnswers>()
                 .HasOne(aui => aui.User)

@@ -16,7 +16,7 @@ namespace UndergroundInnovation.Models
         [Column(TypeName = "text")]
         public string Question { get; set; }
         [Column(TypeName = "text")]
-        public string Description { get; set; }
+        public String Description { get; set; }
 
         public string AuthorId { get; set; }
         [ForeignKey("AuthorId")]
@@ -25,7 +25,7 @@ namespace UndergroundInnovation.Models
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
-        public int ForumId { get; set; }
+        public int? ForumId { get; set; }
         [ForeignKey("ForumId")]
         public Forum Forum { get; set; }
 
@@ -34,6 +34,6 @@ namespace UndergroundInnovation.Models
         [Column("created_at")]
         public DateTime CreatedDate { get; set; }
         [Column("updated_at")]
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

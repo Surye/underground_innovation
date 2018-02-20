@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace underground_innovation.Migrations
+namespace UndergroundInnovation.Migrations
 {
     public partial class RemoveOpenID : Migration
     {

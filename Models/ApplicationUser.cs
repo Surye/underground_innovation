@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using underground_innovation.Models;
 
 namespace UndergroundInnovation.Models
 {

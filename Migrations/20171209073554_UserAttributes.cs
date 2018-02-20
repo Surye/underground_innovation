@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace underground_innovation.Migrations
+namespace UndergroundInnovation.Migrations
 {
     public partial class UserAttributes : Migration
     {

@@ -5,9 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using underground_innovation.Middleware;
 
-namespace underground_innovation.Middleware
+namespace UndergroundInnovation.Middleware
 {
     public class SpaFallbackMiddleware
     {

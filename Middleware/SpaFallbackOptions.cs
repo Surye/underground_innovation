@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace underground_innovation.Middleware
+namespace UndergroundInnovation.Middleware
 {
     public class SpaFallbackOptions
     {

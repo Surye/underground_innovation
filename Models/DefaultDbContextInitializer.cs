@@ -5,9 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UndergroundInnovation.Data;
-using UndergroundInnovation.Models;
 
-namespace underground_innovation.Models
+namespace UndergroundInnovation.Models
 {
     public class DefaultDbContextInitializer : IDefaultDbContextInitializer
     {
