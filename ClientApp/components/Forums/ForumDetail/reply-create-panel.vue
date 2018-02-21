@@ -17,7 +17,7 @@
 
       </b-col>
       <b-col>
-        <b-button class="save-btn" @click="save" style="">Save</b-button>
+        <b-button class="save-btn" @click="save" variant="success">Save</b-button>
       </b-col>
     </b-row>
   </div>

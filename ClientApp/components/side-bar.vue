@@ -1,8 +1,8 @@
 <template>
   <b-nav vertical class="bg-dark h-100">
     <b-link to="/projects" class="nav-link bg-dark text-muted" href="#">Projects</b-link>
-    <a class="nav-link bg-dark text-muted" href="#">Home</a>
-    <!--<a class="nav-link bg-dark text-muted" href="#">Submissions</a>
+    <!--<a class="nav-link bg-dark text-muted" href="#">Home</a>
+    <a class="nav-link bg-dark text-muted" href="#">Submissions</a>
     <a class="nav-link bg-dark text-muted" href="#">Top Topics</a>
     <a class="nav-link bg-dark text-muted" href="#">Ellis Group</a>
     <a class="nav-link bg-dark text-muted" href="#">Fellowship Program</a>

@@ -41,7 +41,7 @@ namespace UndergroundInnovation.Controllers
         
         // POST: api/Project
         [HttpPost]
-        public Project Post(string admin, [FromBody]Project project)
+        public Project Post([FromBody]Project project)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -49,7 +49,7 @@ namespace UndergroundInnovation.Controllers
                 db.Add(project);
                 membership.Admin = true;
                 membership.Project = project;
-                membership.UserId = admin;
+                membership.UserId = "13dc3112-2427-4275-bcad-368021f01a2b";
                 db.Add(membership);
                 db.SaveChanges();
                 return project;

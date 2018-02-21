@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <b-container fluid>
+    <b-container fluid  style="height:100vh">
       <b-row>
         <b-col>
           <nav-menu params="route: route"></nav-menu>
         </b-col>
       </b-row>
-      <b-row class="main-content">
+      <b-row class="main-content"  style="height:100vh">
         <b-col cols="2">
           <side-bar></side-bar>
         </b-col>
