@@ -10,15 +10,19 @@ namespace UndergroundInnovation.Models
 {
     public class UserPollAnswers : IDatedEntity
     {
-        public int PollAnswerId { get; set; }
+        [Required]
+        public int? PollAnswerId { get; set; }
         public PollAnswer PollAnswer { get; set; }
 
+        [Required]
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
+
+        [Required]
         [Column("created_at")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         [Column("updated_at")]
         public DateTime? UpdatedDate { get; set; }
     }

@@ -95,14 +95,16 @@ namespace UndergroundInnovation.Data
 
             foreach (var entry in modifiedEntries)
             {
-                var entity = entry.Entity as IDatedEntity;
-
-                if (entry.State == EntityState.Added)
+                if (entry.Entity is IDatedEntity entity)
                 {
-                    entity.CreatedDate = now;
-                }
 
-                entity.UpdatedDate = now;
+                    if (entry.State == EntityState.Added)
+                    {
+                        entity.CreatedDate = now;
+                    }
+
+                    entity.UpdatedDate = now;
+                }
             }
 
             return base.SaveChanges();

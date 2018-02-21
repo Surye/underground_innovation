@@ -10,9 +10,11 @@ namespace UndergroundInnovation.Models
 {
     public class ProjectMembers
     {
-        public int ProjectId { get; set; }
+        [Required]
+        public int? ProjectId { get; set; }
         public Project Project { get; set; }
 
+        [Required]
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }

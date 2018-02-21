@@ -12,11 +12,13 @@ namespace UndergroundInnovation.Models
     public class PollAnswer
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
+        [Required]
         public string AnswerText { get; set; }
         public bool Deactivated { get; set; }
 
-        public int PollId { get; set; }
+        [Required]
+        public int? PollId { get; set; }
         public Poll Poll { get; set; }
 
         public ICollection<UserPollAnswers> UserPollAnswers { get; } = new List<UserPollAnswers>();

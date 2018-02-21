@@ -12,15 +12,20 @@ namespace UndergroundInnovation.Models
     public class Project : IDatedEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
+
+        [Required]
         public string Title { get; set; }
+
+        [Required]
         [Column(TypeName = "text")]
         public string Description { get; set; }
 
         public ICollection<ProjectMembers> ProjectMembers { get; } = new List<ProjectMembers>();
 
+        [Required]
         [Column("created_at")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         [Column("updated_at")]
         public DateTime? UpdatedDate { get; set; }
     }

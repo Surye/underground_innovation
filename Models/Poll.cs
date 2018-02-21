@@ -12,16 +12,17 @@ namespace UndergroundInnovation.Models
     public class Poll : IDatedEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
+        [Required]
         [Column(TypeName = "text")]
         public string Question { get; set; }
         [Column(TypeName = "text")]
         public String Description { get; set; }
-
+        [Required]
         public string AuthorId { get; set; }
         [ForeignKey("AuthorId")]
         public ApplicationUser Author { get; set; }
-
+        [Required]
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
@@ -31,8 +32,9 @@ namespace UndergroundInnovation.Models
 
         public List<PollAnswer> PollAnswers { get; set; }
 
+        [Required]
         [Column("created_at")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         [Column("updated_at")]
         public DateTime? UpdatedDate { get; set; }
     }
