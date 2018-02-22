@@ -7,7 +7,7 @@
     </div>
 </template>
 
-<script> 
+<script>
 import ForumsSummaryPanel from './forums-summary-panel'
 
 export default {

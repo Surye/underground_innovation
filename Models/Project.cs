@@ -23,6 +23,18 @@ namespace UndergroundInnovation.Models
 
         public ICollection<ProjectMembers> ProjectMembers { get; } = new List<ProjectMembers>();
 
+        [NotMapped]
+        public int? ForumCount
+        {
+            get
+            { 
+                return Forums?.Count;
+            }
+        }
+
+        public List<Poll> Polls { get; set; }
+        public List<Forum> Forums { get; set; }
+
         [Required]
         [Column("created_at")]
         public DateTime? CreatedDate { get; set; }

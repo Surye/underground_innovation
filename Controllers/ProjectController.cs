@@ -32,13 +32,30 @@ namespace UndergroundInnovation.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var project = db.Projects.Include(proj => proj.ProjectMembers)
+                var project = db.Projects.Include(proj => proj.ProjectMembers).Include(proj => proj.Forums).Include(proj => proj.Polls)
                     .Where(b => b.Id == id).FirstOrDefault();
 
                 return project;
             }
         }
-        
+
+        [HttpPost("{id}/Join")]
+        public Project Join(int id)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var project = db.Projects.Include(proj => proj.ProjectMembers)
+                    .Where(b => b.Id == id).FirstOrDefault();
+                var membership = new ProjectMembers();
+                membership.Project = project;
+                membership.UserId = "13dc3112-2427-4275-bcad-368021f01a2b";
+                db.Add(membership);
+                db.SaveChanges();
+
+                return project;
+            }
+        }
+
         // POST: api/Project
         [HttpPost]
         public Project Post([FromBody]Project project)

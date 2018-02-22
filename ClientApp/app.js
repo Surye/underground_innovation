@@ -8,6 +8,8 @@ import App from 'components/app-root'
 import BootstrapVue from 'bootstrap-vue'
 import VuePaginate from 'vue-paginate'
 import VueScrollTo from 'vue-scrollto'
+import Toasted from 'vue-toasted'
+import AsyncComputed from 'vue-async-computed'
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,6 +18,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(VuePaginate)
 Vue.use(BootstrapVue)
 Vue.use(VueScrollTo)
+Vue.use(Toasted)
+Vue.use(AsyncComputed)
 
 sync(store, router)
 

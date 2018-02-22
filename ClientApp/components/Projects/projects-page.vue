@@ -4,7 +4,7 @@
         <b-breadcrumb :items="items"/>
     </b-row>
     <b-form-checkbox plain v-model="my_projects"> Only Show My Projects</b-form-checkbox>
-    <ProjectsSummaryPanel :project="project" v-for="project in filteredProjects" :key="project.id" />
+    <ProjectsSummaryPanel @join="joinedProject" :member="isMember(project)" :project="project" v-for="project in filteredProjects" :key="project.id" />
 
     <b-modal ref="addProject" size="lg" center hide-footer title="Create new Project.">
       <ProjectCreatePanel ref="addProjectPanel" @save="saveAddProject"/>
@@ -32,9 +32,9 @@
     computed: {
       filteredProjects() {
         if(!this.my_projects) {
-          return this.projects;
+          return this.projects
         } else {
-          return this.projects.filter(proj => proj.member == true);
+          return this.projects.filter(proj => this.isMember(proj) == true)
         }
       }
     },
@@ -50,6 +50,23 @@
       showProjectsAdd () {
         this.$refs.addProjectPanel.reset()
         this.$refs.addProject.show()
+      },
+      isMember (project) {
+        var userId = '13dc3112-2427-4275-bcad-368021f01a2b'
+        for(var member of project.projectMembers) {
+          if(member.userId == userId) {
+            return true
+          }
+        }
+        return false
+      },
+      joinedProject (project) {
+        for(var idx in this.projects) {
+          if(this.projects[idx].id == project.id) {
+            this.projects.splice(idx, 1, project)
+            this.$toasted.success('Joined project '+project.title+'!', {duration: 2000})
+          }
+        }
       }
     },
     updated () {
