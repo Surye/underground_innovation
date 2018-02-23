@@ -13,10 +13,10 @@
           <b-col cols=2>
             <small>
               <b-row>
-                Author: {{forum.author}}
+                Author: {{forum.authorName}}
               </b-row>
               <b-row>
-                Post Date: {{forum.create_time}}
+                Post Date: {{forum.createdDate}}
               </b-row>
             </small>
           </b-col>

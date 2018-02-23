@@ -41,10 +41,12 @@ namespace UndergroundInnovation.Controllers
         
         // POST: api/ForumPost
         [HttpPost]
-        public ForumPost Post(string admin, [FromBody]ForumPost forumPost)
+        public ForumPost Post([FromBody]ForumPost forumPost)
         {
             using (var db = new ApplicationDbContext())
             {
+                forumPost.AuthorId = "13dc3112-2427-4275-bcad-368021f01a2b";
+
                 db.Add(forumPost);
                 db.SaveChanges();
                 return forumPost;

@@ -6,10 +6,10 @@
           <b-col cols=2>
             <small>
               <b-row>
-                Author: {{reply.author}}
+                Author: {{reply.authorName}}
               </b-row>
               <b-row>
-                Post Date: {{reply.create_time}}
+                Post Date: {{reply.createdDate}}
               </b-row>
             </small>
           </b-col>

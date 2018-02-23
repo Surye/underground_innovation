@@ -17,7 +17,7 @@
                    placeholder="Enter your password"
                    v-model="credentials.password">
         </div>
-        <button class="btn btn-primary" @click="submit()">Access</button>
+        <b-button variant="primary" :to="{name: 'projects'}">Access</b-button> <b-button variant="warning" class="register-btn" :to="{name: 'register'}">Register</b-button>
     </div>
 </template>
 
@@ -48,5 +48,7 @@
 </script>
 
 <style>
-
+  .register-btn {
+    float: right
+  }
 </style>

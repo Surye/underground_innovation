@@ -20,7 +20,7 @@ namespace UndergroundInnovation.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var PollList = db.Polls.ToList();
+                var PollList = db.Polls.Include(forum => forum.PollAnswers).ToList();
 
                 return PollList;
             }
@@ -33,7 +33,7 @@ namespace UndergroundInnovation.Controllers
             using (var db = new ApplicationDbContext())
             {
                 var Poll = db.Polls
-                    .Where(b => b.Id == id).FirstOrDefault();
+                    .Where(b => b.Id == id).Include(forum => forum.PollAnswers).FirstOrDefault();
 
                 return Poll;
             }
@@ -45,6 +45,7 @@ namespace UndergroundInnovation.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
+                poll.AuthorId = "13dc3112-2427-4275-bcad-368021f01a2b";
                 db.Add(poll);
                 db.SaveChanges();
                 return poll;

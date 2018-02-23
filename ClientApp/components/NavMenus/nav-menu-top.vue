@@ -6,7 +6,7 @@
 
 
     <b-navbar-brand href="#" class="navbar-center">
-      <h1>Underground Innovation</h1>
+      <h1>Innovation Underground</h1>
     </b-navbar-brand>
 
 

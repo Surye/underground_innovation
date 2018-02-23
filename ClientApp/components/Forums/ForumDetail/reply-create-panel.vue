@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import {HTTP} from '../../../http-common'
 export default {
   data () {
     return {
@@ -32,8 +33,9 @@ export default {
   },
   methods: {
 
-    save () {
-
+    async save () {
+      var reply = await HTTP.post('/api/ForumPost', { content: this.reply, forumId: this.$route.params.project_id })
+      this.$emit('save', reply.data)
     },
     reset () {
       this.reply = ""

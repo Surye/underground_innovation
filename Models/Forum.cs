@@ -23,13 +23,49 @@ namespace UndergroundInnovation.Models
         public string AuthorId { get; set; }
         [ForeignKey("AuthorId")]
         public ApplicationUser Author { get; set; }
+        [NotMapped]
+        public string AuthorName => this.Author?.FullName;
+
 
         [Required]
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
+        [NotMapped]
+        public List<ReplyViewModel> Replies
+        {
+            get
+            {
+                List<ReplyViewModel> ret = new List<ReplyViewModel>();
+                foreach(var poll in this.Polls ?? Enumerable.Empty<Poll>())
+                {
+                    ret.Add(
+                        new ReplyViewModel
+                        {
+                            Type = "poll",
+                            Poll = poll,
+                            CreatedDate = poll.CreatedDate
+                        }
+                    );
+                }
+                foreach (var post in this.Posts ?? Enumerable.Empty<ForumPost>())
+                {
+                    ret.Add(
+                        new ReplyViewModel
+                        {
+                            Type = "reply",
+                            Reply = post,
+                            CreatedDate = post.CreatedDate
+                        }
+                    );
+                }
+                
+                return ret.OrderBy(o => o.CreatedDate).ToList();
+            }
+        }
 
         public List<Poll> Polls { get; set; }
+        public List<ForumPost> Posts { get; set; }
 
         [Required]
         [Column("created_at")]

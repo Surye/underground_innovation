@@ -20,8 +20,8 @@ namespace UndergroundInnovation.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var ForumList = db.Forums.ToList();
-
+                var projectId = int.Parse(HttpContext.Request.Query["projectId"].ToString());
+                var ForumList = db.Forums.Where(b => b.ProjectId == projectId).Include(forum => forum.Polls).ThenInclude(poll => poll.PollAnswers).Include(forum => forum.Posts).Include(forum => forum.Author).ToList();
                 return ForumList;
             }
         }
@@ -33,7 +33,7 @@ namespace UndergroundInnovation.Controllers
             using (var db = new ApplicationDbContext())
             {
                 var Forum = db.Forums
-                    .Where(b => b.Id == id).FirstOrDefault();
+                    .Where(b => b.Id == id).Include(forum => forum.Polls).ThenInclude(poll => poll.PollAnswers).Include(forum => forum.Posts).Include(forum => forum.Author).FirstOrDefault();
 
                 return Forum;
             }
@@ -45,6 +45,8 @@ namespace UndergroundInnovation.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
+                forum.AuthorId = "13dc3112-2427-4275-bcad-368021f01a2b";
+
                 db.Add(forum);
                 db.SaveChanges();
                 return forum;
@@ -60,7 +62,7 @@ namespace UndergroundInnovation.Controllers
                 var Forum = Get(id);
                 Forum.Title = newForum.Title;
                 Forum.Description = newForum.Description;
-
+                Forum.AuthorId = "13dc3112-2427-4275-bcad-368021f01a2b";
                 db.Add(Forum);
                 db.SaveChanges();
                 return Forum;

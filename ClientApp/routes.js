@@ -15,11 +15,11 @@ import { requireAuth } from './auth';
 
 export const routes = [
   // Always show link to home page.
-  { path: '/', component: HomePage, display: 'Home', style: 'glyphicon glyphicon-home', displayLoggedIn: true, displayLoggedOut: true,  },
+  { path: '/', component: Login, display: 'Home', style: 'glyphicon glyphicon-home', displayLoggedIn: true, displayLoggedOut: true,  },
 
   // Only When Logged Out
   { path: '/login', component: Login, display: 'Login', style: 'glyphicon glyphicon-user', displayLoggedIn: false, displayLoggedOut: true, },
-  { path: '/register', component: Registration, display: 'Register', style: 'glyphicon glyphicon-asterisk', displayLoggedIn: false, displayLoggedOut: true, },
+  { path: '/register', component: Registration, name: 'register', style: 'glyphicon glyphicon-asterisk', displayLoggedIn: false, displayLoggedOut: true, },
 
   { name: 'projects', path: '/projects', component: Projects },
   { name: 'project_details', path: '/projects/:project_id', component: ProjectDetails },

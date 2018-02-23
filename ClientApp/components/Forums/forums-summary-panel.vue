@@ -4,20 +4,20 @@
             <b-card>
                 <b-row>
                     <b-col cols=10>
-                        <h4><b-link :to="{ name: 'project_forums_replies', params: { forum_id: forum.id }}">{{forum.title}}</b-link> <b-badge v-if="forum.unread">UNREAD</b-badge></h4>
+                        <h4><b-link :to="{ name: 'project_forums_replies', params: { forum_id: forum.id }}">{{forum.title}}</b-link></h4>
                     </b-col>
                     <b-col cols=2>
-                        Reply Count: {{forum.posts.length}}
+                        Reply Count: {{forum.posts.length + forum.polls.length}}
                     </b-col>
                 </b-row>
                 <b-row class="card-footer">
                     <b-col cols=2>
                         <small>
                             <b-row>
-                                Author: {{forum.author}}
+                                Author: {{forum.authorName}}
                             </b-row>
                             <b-row>
-                                Post Date: {{forum.create_time}}
+                                Post Date: {{forum.createdDate}}
                             </b-row>
                         </small>
                     </b-col>
@@ -37,11 +37,13 @@ export default {
     forum: Object
   },
   data() {
+    console.log(this.forum)
     return {
     }
   }
 }
 </script>
+
 
 <style scoped>
 </style>

@@ -22,10 +22,7 @@ namespace UndergroundInnovation.Models
         public string AuthorId { get; set; }
         [ForeignKey("AuthorId")]
         public ApplicationUser Author { get; set; }
-
-        [Required]
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public string AuthorName => this.Author?.FullName;
 
         [Required]
         public int ForumId { get; set; }

@@ -26,10 +26,10 @@
         <h4>Answers:</h4>
       </b-col>
     </b-row>
-    <template v-for="answer in answers">
-      <b-row :key="answer.id">
+    <template v-for="(answer,idx) in answers">
+      <b-row :key="idx">
         <b-col>
-          <b-input placeholder="New Answer" v-model="answer.text" class="mb-3"/>
+          <b-input placeholder="New Answer" v-model="answer.answerText" class="mb-3"/>
         </b-col>
       </b-row>
     </template>
@@ -45,28 +45,45 @@
 </template>
 
 <script>
+import {HTTP} from '../../http-common'
 export default {
+  props: ['forumId'],
   data () {
     return {
       question: "",
       description: "",
-      answers: []
+      answers: [{
+        answerText: ""
+      }]
     }
   },
   methods: {
     add_answer () {
       this.answers.push({
-        id: null,
-        text: ""
+        answerText: ""
       })
     },
-    save () {
+    async save () {
+      let poll = {
+        question: this.question,
+        description: this.description,
+        projectId: this.$route.params.project_id,
+        pollAnswers: this.answers
+      }
+      console.log(this.forumId)
+      if(this.forumId) {
+        poll.forumId = this.forumId
+      }
 
+      var newPoll = await HTTP.post('/api/Poll', poll)
+      this.$emit('save', newPoll.data)
     },
     reset () {
       this.question = "",
       this.description = "",
-      this.answers = []
+      this.answers = [{
+        answerText: ""
+      }]
     }
   }
 }
