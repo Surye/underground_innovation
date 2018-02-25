@@ -46,9 +46,9 @@ namespace UndergroundInnovation.Controllers
             using (var db = new ApplicationDbContext())
             {
                 forum.AuthorId = "13dc3112-2427-4275-bcad-368021f01a2b";
-
                 db.Add(forum);
                 db.SaveChanges();
+                db.Entry(forum).Reference(b => b.Author).Load();
                 return forum;
             }
         }

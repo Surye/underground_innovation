@@ -34,7 +34,7 @@ export default {
   methods: {
 
     async save () {
-      var reply = await HTTP.post('/api/ForumPost', { content: this.reply, forumId: this.$route.params.project_id })
+      var reply = await HTTP.post('/api/ForumPost', { content: this.reply, forumId: this.$route.params.forum_id })
       this.$emit('save', reply.data)
     },
     reset () {

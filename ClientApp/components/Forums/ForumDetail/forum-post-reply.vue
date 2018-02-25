@@ -9,7 +9,7 @@
                 Author: {{reply.authorName}}
               </b-row>
               <b-row>
-                Post Date: {{reply.createdDate}}
+                Post Date: {{reply.createdDate | moment("MMMM Do YYYY hh:mm A")}}
               </b-row>
             </small>
           </b-col>

@@ -21,6 +21,15 @@ namespace UndergroundInnovation.Models
         public int? PollId { get; set; }
         public Poll Poll { get; set; }
 
+        [NotMapped]
+        public int CurrentSelections {
+            get
+            {
+                //return UserPollAnswers.Count;
+                return new Random(Id.Value).Next(15);
+            }
+        }
+
         public ICollection<UserPollAnswers> UserPollAnswers { get; } = new List<UserPollAnswers>();
     }
 }

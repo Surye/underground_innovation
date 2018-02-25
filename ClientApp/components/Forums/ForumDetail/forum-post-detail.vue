@@ -16,12 +16,12 @@
                 Author: {{forum.authorName}}
               </b-row>
               <b-row>
-                Post Date: {{forum.createdDate}}
+                Post Date: {{forum.createdDate  | moment("MMMM Do YYYY hh:mm A")}}
               </b-row>
             </small>
           </b-col>
           <b-col cols=10>
-            {{forum.content}}
+            {{forum.description}}
           </b-col>
         </b-row>
       </b-card>
