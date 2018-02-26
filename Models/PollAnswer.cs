@@ -26,7 +26,10 @@ namespace UndergroundInnovation.Models
             get
             {
                 //return UserPollAnswers.Count;
-                return new Random(Id.Value).Next(15);
+                if (Id.HasValue)
+                    return new Random(Id.Value).Next(15);
+                else
+                    return 0;
             }
         }
 

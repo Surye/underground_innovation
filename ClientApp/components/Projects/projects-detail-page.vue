@@ -3,7 +3,7 @@
     <b-row>
     <b-breadcrumb :items="items"/>
     </b-row>
-    <b-jumbotron :header="project.title" :lead="project.description"></b-jumbotron>
+    <b-jumbotron class="banner" :header="project.title" :lead="project.description" ></b-jumbotron>
     <b-card-group deck>
         <b-card header-tag="h3"
                 header="Forums"
@@ -74,5 +74,10 @@ div.go-button {
 
 dl {
     float: left;
+}
+
+.banner {
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 </style>
