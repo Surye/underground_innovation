@@ -70,9 +70,9 @@ export default {
         projectId: this.$route.params.project_id,
         pollAnswers: this.answers
       }
-      console.log(this.forumId)
-      if(this.forumId) {
-        poll.forumId = this.forumId
+      console.log(this.$route.params.forum_id)
+      if(this.$route.params.forum_id) {
+        poll.forumId = this.$route.params.forum_id
       }
 
       var newPoll = await HTTP.post('/api/Poll', poll)
