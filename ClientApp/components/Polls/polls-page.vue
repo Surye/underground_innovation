@@ -12,7 +12,7 @@
         ></fab>
 
       <b-modal ref="addPoll" size="lg" center hide-footer title="Add new poll reply.">
-        <PollCreatePanel ref="newPoll"/>
+        <PollCreatePanel ref="newPoll" @save="savePoll"/>
         <b-btn class="mt-3" variant="outline-danger" block @click="hidePollsAdd">Cancel</b-btn>
       </b-modal>
     </div>
@@ -28,6 +28,11 @@ import {HTTP} from '../../http-common'
 export default {
   components: { PollDisplayPanel, fab, PollCreatePanel },
   methods:{
+    savePoll (poll) {
+      this.scrollToBottom = true
+      this.polls.push(poll)
+      this.hidePollsAdd()
+    },
     hidePollsAdd () {
       this.$refs.addPoll.hide()
     },
@@ -72,16 +77,6 @@ export default {
           }
         ]
       },
-      items: [{
-        text: 'Projects',
-        to: { name: 'projects' }
-      }, {
-        text: 'Drone Lunch Delivery', // This will be dynamic based on the project we're in
-        to: { name: 'project_details', params: { project_id: this.$route.params.id } }
-      }, {
-        text: 'Polls',
-        active: true
-      }],
       polls: []
     }
   }

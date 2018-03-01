@@ -17,7 +17,7 @@
                    placeholder="Enter your password"
                    v-model="credentials.password">
         </div>
-        <b-button variant="primary" :to="{name: 'projects'}">Access</b-button> <b-button variant="warning" class="register-btn" :to="{name: 'register'}">Register</b-button>
+        <b-button variant="primary" @click="login">Access</b-button> <b-button variant="warning" class="register-btn" :to="{name: 'register'}">Register</b-button>
     </div>
 </template>
 
@@ -36,6 +36,15 @@
             }
         },
         methods: {
+            login () {
+              if(this.credentials.username == 'test' && this.credentials.password == 'test') {
+                this.$router.push({name: 'projects'})
+              } else {
+                this.$toasted.error('Incorrect username or password', {duration: 2000, position: 'top-center'})
+                this.credentials.username = ''
+                this.credentials.password = ''
+              }
+            },
             submit() {
 
                 // We need to pass the component's this context

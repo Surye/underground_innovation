@@ -32,7 +32,7 @@ namespace UndergroundInnovation.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var project = db.Projects.Include(proj => proj.ProjectMembers).Include(proj => proj.Forums).Include(proj => proj.Polls)
+                var project = db.Projects.Include(proj => proj.ProjectMembers).ThenInclude(pm => pm.User).Include(proj => proj.Forums).Include(proj => proj.Polls)
                     .Where(b => b.Id == id).FirstOrDefault();
 
                 return project;

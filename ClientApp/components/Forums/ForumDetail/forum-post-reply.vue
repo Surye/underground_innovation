@@ -14,7 +14,7 @@
             </small>
           </b-col>
           <b-col cols=10>
-            {{reply.content}}
+            <p>{{reply.content}}</p>
           </b-col>
         </b-row>
       </b-card>

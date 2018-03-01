@@ -21,7 +21,7 @@
             </small>
           </b-col>
           <b-col cols=10>
-            {{forum.description}}
+            <p>{{forum.description}}</p>
           </b-col>
         </b-row>
       </b-card>
