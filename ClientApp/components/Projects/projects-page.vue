@@ -91,7 +91,7 @@
             }
           ]
         },
-        my_projects: false
+        my_projects: true
       }
     },
     async created() {
@@ -102,5 +102,6 @@
 
 </script>
 
-<style>
+<style scoped>
+
 </style>

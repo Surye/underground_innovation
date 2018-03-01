@@ -42,4 +42,8 @@
 </script>
 
 <style scoped>
+  a.disabled {
+    pointer-events: none;
+    color: darkgray;
+  }
 </style>
