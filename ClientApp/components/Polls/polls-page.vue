@@ -55,7 +55,7 @@ export default {
         text: this.project.title,
         to: { name: 'project_details', project_id: this.$route.params.project_id }
       }, {
-        text: 'Forums',
+        text: 'Polls',
         active: true
       }]
     }
